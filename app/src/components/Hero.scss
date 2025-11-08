@@ -1,0 +1,96 @@
+.hero-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--hero-bg);
+
+  ::selection {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.hero-main-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem 2rem;
+
+  opacity: 0;
+  filter: blur(5px);
+
+  animation:
+    0.9s cubic-bezier(0.7, 0, 0.84, 0) forwards whenVisibleBlur,
+    0.9s cubic-bezier(0.7, 0, 0.84, 0) forwards whenVisibleOpacity;
+
+  @keyframes whenVisibleBlur {
+    from {
+      filter: blur(5px);
+    }
+    to {
+      filter: blur(0px);
+    }
+  }
+
+  @keyframes whenVisibleOpacity {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.hero-name {
+  text-align: right;
+  color: var(--hero-name);
+  font-size: 4rem;
+  line-height: 1;
+  padding: 0.5rem 0;
+  font-family:
+    "Bison",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+}
+
+@media (min-width: 420px) {
+  .hero-name {
+    font-size: 6rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-name {
+    font-size: 10rem;
+  }
+}
+
+.hero-title {
+  text-align: center;
+  color: var(--hero-title);
+  font-size: 1.75rem;
+  padding: 0.5rem 0;
+  font-family:
+    "Brandon Grotesque",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+}
