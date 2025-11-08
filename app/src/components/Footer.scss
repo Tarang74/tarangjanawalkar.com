@@ -1,4 +1,4 @@
-.footer {
+footer {
   width: 100%;
   background-color: var(--footer-bg);
   color: var(--footer-text);
@@ -82,7 +82,7 @@
 
 .footer-section-link {
   color: var(--footer-link);
-  text-decoration: underline solid transparent;
+  text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
