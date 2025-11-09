@@ -16,7 +16,8 @@ provider "cloudflare" {
 }
 
 provider "aws" {
-  region = "ap-southeast-2"
+  region  = "ap-southeast-2"
+  profile = "personal"
   default_tags {
     tags = {
       purpose = "portfolio"
