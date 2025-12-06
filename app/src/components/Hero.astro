@@ -4,11 +4,155 @@ import "./Hero.scss";
 
 <div class="hero-container">
   <div class="hero-main-content">
-    <div class="hero-name">
-      <span>TARANG</span>
-      <br />
-      <span>JANAWALKAR</span>
-    </div>
-    <div class="hero-title">Software Engineer</div>
+    <div class="hero-name-spacer"></div>
+    <div class="hero-title" id="hero-title">Software Engineer</div>
   </div>
 </div>
+
+<div class="hero-name-animated" id="hero-name-animated">
+  <span>TARANG</span>
+  <br />
+  <span>JANAWALKAR</span>
+</div>
+
+<script is:inline>
+  function initHeroAnimation() {
+    const heroNameAnimated = document.getElementById("hero-name-animated");
+    const heroNameSpacer = document.querySelector(".hero-name-spacer");
+    const heroTitle = document.getElementById("hero-title");
+
+    if (!heroNameAnimated || !heroNameSpacer || !heroTitle) return;
+
+    // Set spacer height to match the animated name
+    const nameHeight = heroNameAnimated.offsetHeight;
+    heroNameSpacer.style.height = `${nameHeight}px`;
+
+    let ticking = false;
+
+    function handleScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateAnimation();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    function updateAnimation() {
+      const scrollY = window.scrollY;
+      const vh = window.innerHeight;
+
+      // Get the spacer's position relative to viewport
+      const spacerRect = heroNameSpacer.getBoundingClientRect();
+      const spacerTop = spacerRect.top + scrollY;
+
+      // Phase 1: Position name at spacer location until it reaches top
+      if (scrollY < spacerTop) {
+        // Name is at its natural position in the hero
+        heroNameAnimated.style.position = "absolute";
+        heroNameAnimated.style.top = `${spacerTop}px`;
+        heroNameAnimated.style.left = "50%";
+        heroNameAnimated.style.transform = "translateX(-50%)";
+        heroNameAnimated.style.opacity = "1";
+        heroNameAnimated.style.pointerEvents = "none";
+        heroTitle.style.opacity = "1";
+      }
+      // Phase 2: Stick to top and fade out title
+      else if (scrollY >= spacerTop && scrollY < vh) {
+        heroNameAnimated.style.position = "fixed";
+        heroNameAnimated.style.top = "0";
+        heroNameAnimated.style.left = "50%";
+        heroNameAnimated.style.transform = "translateX(-50%)";
+        heroNameAnimated.style.pointerEvents = "none";
+
+        // Fade out title from top of name to bottom of name
+        const titleStartFade = spacerTop;
+        const titleEndFade = spacerTop + nameHeight;
+        const fadeProgress = Math.min(
+          1,
+          Math.max(
+            0,
+            (scrollY - titleStartFade) / (titleEndFade - titleStartFade),
+          ),
+        );
+        heroTitle.style.opacity = (1 - fadeProgress).toString();
+      }
+      // Phase 3: Shrink and move to top-right over next 50vh
+      else if (scrollY >= vh && scrollY < vh * 1.5) {
+        const transitionProgress = (scrollY - vh) / (vh * 0.5);
+
+        const startScale = 1;
+        const endScale = 0.3;
+        const scale = startScale - (startScale - endScale) * transitionProgress;
+
+        // Calculate current center position
+        const viewportWidth = document.documentElement.clientWidth;
+        const currentCenterX = viewportWidth / 2;
+        const currentY = 0;
+
+        // Calculate target position (top-right, accounting for scale)
+        const nameWidth = heroNameAnimated.offsetWidth;
+        const targetX = viewportWidth - (nameWidth * endScale) / 2 - 32;
+        const targetY = 32;
+
+        // Interpolate position
+        const finalX =
+          currentCenterX + (targetX - currentCenterX) * transitionProgress;
+        const finalY = currentY + (targetY - currentY) * transitionProgress;
+
+        heroNameAnimated.style.position = "fixed";
+        heroNameAnimated.style.left = `${finalX}px`;
+        heroNameAnimated.style.top = `${finalY}px`;
+        heroNameAnimated.style.transform = `translate(-50%, 0) scale(${scale})`;
+        heroNameAnimated.style.transformOrigin = "center top";
+        heroNameAnimated.style.pointerEvents = "none";
+
+        heroTitle.style.opacity = "0";
+      }
+      // Phase 4: Stay fixed at top-right
+      else {
+        const viewportWidth = document.documentElement.clientWidth;
+        const nameWidth = heroNameAnimated.offsetWidth;
+        const finalX = viewportWidth - (nameWidth * 0.3) / 2 - 32;
+
+        heroNameAnimated.style.position = "fixed";
+        heroNameAnimated.style.left = `${finalX}px`;
+        heroNameAnimated.style.top = "32px";
+        heroNameAnimated.style.transform = "translate(-50%, 0) scale(0.3)";
+        heroNameAnimated.style.transformOrigin = "center top";
+        heroNameAnimated.style.pointerEvents = "auto";
+        heroTitle.style.opacity = "0";
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    let resizeTimeout;
+    window.addEventListener(
+      "resize",
+      () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          heroNameSpacer.style.height = `${heroNameAnimated.offsetHeight}px`;
+          updateAnimation();
+        }, 100);
+      },
+      { passive: true },
+    );
+
+    // Initial position
+    updateAnimation();
+
+    // Click to scroll to top
+    heroNameAnimated.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeroAnimation);
+  } else {
+    initHeroAnimation();
+  }
+</script>

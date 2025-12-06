@@ -46,7 +46,14 @@
   }
 }
 
-.hero-name {
+.hero-name-spacer {
+  width: 100%;
+  // Height will be set by JS
+}
+
+.hero-name-animated {
+  position: absolute;
+  z-index: 9999;
   text-align: right;
   color: var(--hero-name);
   font-size: 4rem;
@@ -60,16 +67,18 @@
     Roboto,
     "Helvetica Neue",
     Arial;
+  cursor: pointer;
+  will-change: transform, top, left;
 }
 
 @media (min-width: 420px) {
-  .hero-name {
+  .hero-name-animated {
     font-size: 6rem;
   }
 }
 
 @media (min-width: 768px) {
-  .hero-name {
+  .hero-name-animated {
     font-size: 10rem;
   }
 }
