@@ -61,7 +61,7 @@ const projects = [
   },
   {
     title: "The Sway",
-    subtitle: "Audima",
+    subtitle: "Audima Labs",
     description:
       "Architected and developed a real-time desktop application to control a motion-controlled ARM Cortex-M7 STM32-based MIDI device. Built with Rust and React, featuring low-latency, high-throughput data exchange for performance-critical environments.",
     tags: [
@@ -71,10 +71,12 @@ const projects = [
       "React",
       "Desktop Software",
       "USB DFU",
-      "Custom Protocol",
+      "Custom Uart Protocol",
       "STM32H7",
     ],
-    links: [{ text: "Website", url: "https://audima.com.au" }],
+    links: [
+      { text: "Download Software", url: "https://audima.com.au/downloads" },
+    ],
   },
   {
     title: "Nonlinear Water Waves and Signal Analysis",
@@ -153,9 +155,6 @@ const projects = [
                 </div>
               )}
             </div>
-            <div class="project-image">
-              <div class="project-image-placeholder" />
-            </div>
           </div>
         </div>
       ))
@@ -178,28 +177,33 @@ const projects = [
 
     if (projectItems.length && projects) {
       const vh = window.innerHeight;
-      // const vw = window.innerWidth;
+      const vw = window.innerWidth;
 
       const totalHeight = vh + projectItems.length * vh * 1.5;
-      projects.style.minHeight = totalHeight + "px";
+      if (vw > 1024) {
+        projects.style.minHeight = totalHeight + "px";
+      } else {
+        projects.style.minHeight = "auto";
+      }
 
       function updateProjects() {
         const projectsScrollY = window.scrollY - projects.offsetTop;
-
-        projectItems.forEach(function (item, index) {
-          const itemScrollY = projectsScrollY - index * vh * 1.5;
-          const progress = itemScrollY / vh;
-          const translateX = -progress * 100 + 100;
-          item.style.transform = "translateX(" + translateX + "vw)";
-        });
-
         const banner: HTMLElement | null =
           document.querySelector(".project-banner");
-        if (banner) {
-          const progress = projectsScrollY / totalHeight;
-          const bannerWidth = banner.offsetWidth;
-          const translateX = -progress * bannerWidth;
-          banner.style.transform = "translateX(" + translateX + "px)";
+
+        if (vw > 1024) {
+          projectItems.forEach(function (item, index) {
+            const itemScrollY = projectsScrollY - index * vh * 1.5;
+            const progress = itemScrollY / vh;
+            const translateX = -progress * 100 + 100;
+            item.style.transform = "translateX(" + translateX + "vw)";
+          });
+          if (banner) {
+            const progress = projectsScrollY / totalHeight;
+            const bannerWidth = banner.offsetWidth;
+            const translateX = -progress * bannerWidth;
+            banner.style.transform = "translateX(" + translateX + "px)";
+          }
         }
       }
 

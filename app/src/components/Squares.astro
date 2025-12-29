@@ -7,87 +7,13 @@ import "./Squares.scss";
 <script>
   // Import all SVGs as raw strings
   const svgModules = import.meta.glob("/src/components/letters/*.svg", {
-    as: "raw",
+    query: "?raw",
+    import: "default",
     eager: true,
   });
 
   // Convert to array of SVG strings
   const SVG_CONTENT = Object.values(svgModules);
-
-  const PATHS = [
-    "/src/components/letters/x.svg",
-    "/src/components/letters/y.svg",
-    "/src/components/letters/z.svg",
-    "/src/components/letters/u.svg",
-    "/src/components/letters/v.svg",
-    "/src/components/letters/w.svg",
-    "/src/components/letters/i.svg",
-    "/src/components/letters/j.svg",
-    "/src/components/letters/k.svg",
-    "/src/components/letters/alpha.svg",
-    "/src/components/letters/beta.svg",
-    "/src/components/letters/gamma.svg",
-    "/src/components/letters/delta.svg",
-    "/src/components/letters/epsilon.svg",
-    "/src/components/letters/varepsilon.svg",
-    "/src/components/letters/zeta.svg",
-    "/src/components/letters/eta.svg",
-    "/src/components/letters/theta.svg",
-    "/src/components/letters/vartheta.svg",
-    "/src/components/letters/iota.svg",
-    "/src/components/letters/kappa.svg",
-    "/src/components/letters/lambda.svg",
-    "/src/components/letters/mu.svg",
-    "/src/components/letters/nu.svg",
-    "/src/components/letters/xi.svg",
-    "/src/components/letters/pi.svg",
-    "/src/components/letters/varpi.svg",
-    "/src/components/letters/rho.svg",
-    "/src/components/letters/varrho.svg",
-    "/src/components/letters/sigma.svg",
-    "/src/components/letters/varsigma.svg",
-    "/src/components/letters/tau.svg",
-    "/src/components/letters/upsilon.svg",
-    "/src/components/letters/phi.svg",
-    "/src/components/letters/varphi.svg",
-    "/src/components/letters/chi.svg",
-    "/src/components/letters/psi.svg",
-    "/src/components/letters/omega.svg",
-    "/src/components/letters/uGamma.svg",
-    "/src/components/letters/uDelta.svg",
-    "/src/components/letters/uTheta.svg",
-    "/src/components/letters/uLambda.svg",
-    "/src/components/letters/uXi.svg",
-    "/src/components/letters/uPi.svg",
-    "/src/components/letters/uSigma.svg",
-    "/src/components/letters/uUpsilon.svg",
-    "/src/components/letters/uPhi.svg",
-    "/src/components/letters/uPsi.svg",
-    "/src/components/letters/uOmega.svg",
-    "/src/components/letters/plus.svg",
-    "/src/components/letters/minus.svg",
-    "/src/components/letters/times.svg",
-    "/src/components/letters/equals.svg",
-    "/src/components/letters/neq.svg",
-    "/src/components/letters/approx.svg",
-    "/src/components/letters/lt.svg",
-    "/src/components/letters/gt.svg",
-    "/src/components/letters/leqslant.svg",
-    "/src/components/letters/geqslant.svg",
-    "/src/components/letters/infty.svg",
-    "/src/components/letters/partial.svg",
-    "/src/components/letters/nabla.svg",
-    "/src/components/letters/cdot.svg",
-    "/src/components/letters/int.svg",
-    "/src/components/letters/oint.svg",
-    "/src/components/letters/sum.svg",
-    "/src/components/letters/prod.svg",
-    "/src/components/letters/forall.svg",
-    "/src/components/letters/exists.svg",
-    "/src/components/letters/neg.svg",
-    "/src/components/letters/wedge.svg",
-    "/src/components/letters/vee.svg",
-  ];
 
   (function () {
     const SQUARE_SIZE = 50;
@@ -120,7 +46,7 @@ import "./Squares.scss";
         const physicalWidth = window.innerWidth * window.devicePixelRatio;
         const physicalHeight = window.innerHeight * window.devicePixelRatio;
 
-        const cols = Math.min(40, Math.ceil(physicalWidth / SQUARE_SIZE));
+        const cols = Math.min(60, Math.ceil(physicalWidth / SQUARE_SIZE));
         const rows = Math.min(40, Math.ceil(physicalHeight / SQUARE_SIZE));
 
         const fragment = document.createDocumentFragment();
