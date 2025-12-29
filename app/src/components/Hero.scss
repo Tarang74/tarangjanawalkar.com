@@ -21,31 +21,6 @@
   align-items: center;
   justify-content: center;
   margin: 4rem 2rem;
-
-  opacity: 0;
-  filter: blur(5px);
-
-  animation:
-    0.9s cubic-bezier(0.7, 0, 0.84, 0) forwards whenVisibleBlur,
-    0.9s cubic-bezier(0.7, 0, 0.84, 0) forwards whenVisibleOpacity;
-
-  @keyframes whenVisibleBlur {
-    from {
-      filter: blur(5px);
-    }
-    to {
-      filter: blur(0px);
-    }
-  }
-
-  @keyframes whenVisibleOpacity {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
 }
 
 .hero-name-spacer {
@@ -71,6 +46,32 @@
     Arial;
   cursor: pointer;
   will-change: transform, top, left;
+
+  span {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(20px);
+    animation: 2s cubic-bezier(0.83, 0, 0.17, 1) forwards nameReveal;
+
+    &:first-child {
+      animation-delay: 0s;
+    }
+
+    &:last-child {
+      animation-delay: 0.1s;
+    }
+  }
+
+  @keyframes nameReveal {
+    0% {
+      filter: blur(20px);
+      opacity: 0;
+    }
+    100% {
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
 }
 
 @media (min-width: 420px) {
@@ -98,6 +99,22 @@
     Roboto,
     "Helvetica Neue",
     Arial;
+
+  opacity: 0;
+  filter: blur(20px);
+  animation: 2s cubic-bezier(0.83, 0, 0.17, 1) forwards nameReveal;
+  animation-delay: 0.2s;
+
+  @keyframes nameReveal {
+    from {
+      filter: blur(20px);
+      opacity: 0;
+    }
+    to {
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
 }
 
 @media (min-width: 640px) {

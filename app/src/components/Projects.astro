@@ -193,11 +193,12 @@ const projects = [
           item.style.transform = "translateX(" + translateX + "vw)";
         });
 
-        const banner: HTMLElement | null = document.querySelector(".project-banner");
+        const banner: HTMLElement | null =
+          document.querySelector(".project-banner");
         if (banner) {
-          const progress = projectsScrollY / (totalHeight);
+          const progress = projectsScrollY / totalHeight;
           const bannerWidth = banner.offsetWidth;
-          const translateX = - progress * (bannerWidth);
+          const translateX = -progress * bannerWidth;
           banner.style.transform = "translateX(" + translateX + "px)";
         }
       }
