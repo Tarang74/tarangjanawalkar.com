@@ -8,6 +8,8 @@
   align-items: center;
   padding: 150vh 0;
 
+  // font-family: "Abril Fatface";
+
   &::before,
   &::after {
     content: "";
@@ -42,6 +44,7 @@
   left: 0;
   z-index: 0;
   overflow: hidden;
+  background: #000000;
 }
 
 .education-content {
@@ -57,21 +60,21 @@
 }
 
 .education-heading {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin: 0 0 2rem 0;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  text-shadow:
-    -1px -1px 0px rgba(0, 0, 0, 0.6),
-    -0.75px -0.75px 0px rgba(0, 0, 0, 0.5),
-    -0.5px -0.5px 0px rgba(0, 0, 0, 0.4),
-    -0.25px -0.25px 0px rgba(0, 0, 0, 0.3),
-    0.25px 0.25px 0px rgba(0, 0, 0, 0.3),
-    0.5px 0.5px 0px rgba(0, 0, 0, 0.4),
-    0.75px 0.75px 0px rgba(0, 0, 0, 0.5),
-    1px 1px 0px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.1em;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.6) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 80px rgba(232, 160, 204, 0.2);
 }
 
 .education-items {

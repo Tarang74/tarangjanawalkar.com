@@ -9,6 +9,9 @@ footer {
   justify-content: center;
   align-items: center;
 
+  position: relative;
+  z-index: 1;
+
   @media (min-width: 769px) {
     padding: 4rem 2rem 1rem;
   }
@@ -84,15 +87,32 @@ footer {
   color: var(--footer-link);
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   text-transform: uppercase;
   overflow-wrap: break-word;
   max-width: 100%;
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--footer-link);
+    transition: width 0.3s ease, background-color 0.3s ease;
+  }
 
   &:hover,
   &:focus {
     color: var(--footer-link-hover);
-    text-decoration: underline solid var(--footer-link-hover);
+
+    &::after {
+      background-color: var(--footer-link-hover);
+      width: 100%;
+    }
   }
 }
 

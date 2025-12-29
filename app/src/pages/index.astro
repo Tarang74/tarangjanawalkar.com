@@ -3,6 +3,8 @@ import "../styles/global.scss";
 import Hero from "../components/Hero.astro";
 import Education from "../components/Education.astro";
 import Footer from "../components/Footer.astro";
+import Projects from "../components/Projects.astro";
+// import ScrollIndicator from "../components/ScrollIndicator.astro";
 ---
 
 <!doctype html>
@@ -17,9 +19,30 @@ import Footer from "../components/Footer.astro";
     <main>
       <Hero />
       <Education />
+      <Projects />
     </main>
     <footer>
       <Footer />
     </footer>
+
+    <script>
+      import Lenis from "lenis";
+      import "lenis/dist/lenis.css";
+
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+      });
+
+      function raf(time: number) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    </script>
   </body>
 </html>

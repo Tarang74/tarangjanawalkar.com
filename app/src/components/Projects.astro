@@ -1,0 +1,210 @@
+---
+import "./Projects.scss";
+
+const projects = [
+  {
+    title: "Image Analysis of Osteocyte Networks in Bone",
+    subtitle: "Engineering Honours Thesis",
+    description:
+      "Developed OsteonX, a Python library for quantitative analysis of osteocyte networks from high-resolution confocal microscopy data. Introduced a novel 3D Euclidean distance-based reconstruction method to approximate lamellar growth surfaces in cortical bone, enabling spatial quantification of cellular and dendritic densities across osteonal layers.",
+    meta: [
+      { label: "Grade", value: "High Distinction" },
+      {
+        label: "Supervisors",
+        value: "Associate Professor Pascal Buenzli and Dr Jessica Crawshaw",
+      },
+    ],
+    tags: [
+      "Python",
+      "Image Analysis",
+      "Mathematical Modelling",
+      "Research",
+      "Mathematical Biology",
+    ],
+    links: [
+      { text: "View OsteonX", url: "https://github.com/tarang74/OsteonX" },
+    ],
+  },
+  {
+    title: "Stability Analysis of Additive Continuous Cellular Automata",
+    subtitle: "Wolfram Summer School 2025",
+    description:
+      "Selected for a three-week intensive research program led by Stephen Wolfram on continuous cellular automata dynamics, exploring perturbation stability and emergent structures.",
+    meta: [
+      { label: "Supervisors", value: "Pietro Pepe and Dr Sotiris Michos" },
+    ],
+    tags: ["Research", "Cellular Automata", "Wolfram Language", "Mathematics"],
+    links: [
+      {
+        text: "View Publication",
+        url: "https://community.wolfram.com/groups/-/m/t/3494918",
+      },
+    ],
+  },
+  {
+    title: "QUT Notes",
+    description:
+      "Created and automated a lecture notes system used by over 15,000 students, facilitating access to learning resources for engineering, IT, mathematics, and science students at Queensland University of Technology.",
+    tags: ["LaTeX", "Education", "Lecture Notes"],
+    links: [
+      { text: "View Notes", url: "https://tarang74.gitbook.io/qut-notes" },
+    ],
+  },
+  {
+    title: "CAB202 Handbook",
+    description:
+      "Developed and maintain an online resource for CAB202: Microprocessors and Digital Systems at QUT, supporting thousands of students annually with comprehensive tutorials and guides for embedded systems programming.",
+    tags: ["Education", "Embedded Systems", "AVR", "Documentation"],
+    links: [
+      { text: "View Handbook", url: "https://cab202.gitbook.io/handbook" },
+    ],
+  },
+  {
+    title: "The Sway",
+    subtitle: "Audima",
+    description:
+      "Architected and developed a real-time desktop application to control a motion-controlled ARM Cortex-M7 STM32-based MIDI device. Built with Rust and React, featuring low-latency, high-throughput data exchange for performance-critical environments.",
+    tags: [
+      "Rust",
+      "TypeScript",
+      "Tauri",
+      "React",
+      "Desktop Software",
+      "USB DFU",
+      "Custom Protocol",
+      "STM32H7",
+    ],
+    links: [{ text: "Website", url: "https://audima.com.au" }],
+  },
+  {
+    title: "Nonlinear Water Waves and Signal Analysis",
+    subtitle: "Vacation Research Experience Scheme",
+    description:
+      "Summer research project supervised by Professor Timothy Moroney. Developed a water wave noise model for neural network regularisation and conducted advanced research in data analysis and scientific computing.",
+    meta: [{ label: "Supervisor", value: "Professor Timothy Moroney" }],
+    tags: ["Research", "Python", "Signal Analysis", "Machine Learning"],
+    links: [],
+    year: "2022-2023",
+  },
+  {
+    title: "LaTeX Workshop",
+    description:
+      "Collection of custom LaTeX templates, packages, and utilities for academic writing, including thesis templates, assignment layouts, and presentation slides used by students and researchers.",
+    tags: ["LaTeX", "Templates", "Academic Writing"],
+    links: [
+      {
+        text: "View on GitHub",
+        url: "https://github.com/Tarang74/LaTeX-Workshop",
+      },
+    ],
+  },
+];
+---
+
+<div class="projects-heading-container" id="projects">
+  <h2 class="projects-heading">PROJECTS</h2>
+</div>
+
+<div class="projects-container">
+  <div class="projects-list">
+    {
+      projects.map((project, index) => (
+        <div class="project-item" data-project-index={index}>
+          <div class="project-content">
+            <div class="project-info">
+              <div class="project-header">
+                <h3 class="project-title">{project.title}</h3>
+                {project.subtitle && (
+                  <p class="project-subtitle">{project.subtitle}</p>
+                )}
+              </div>
+
+              <p class="project-description">{project.description}</p>
+
+              {project.meta && project.meta.length > 0 && (
+                <div class="project-meta">
+                  {project.meta.map((item) => (
+                    <p class="project-meta-item">
+                      <span class="project-meta-label">{item.label}:</span>
+                      <span class="project-meta-value">{item.value}</span>
+                    </p>
+                  ))}
+                </div>
+              )}
+
+              <div class="project-tags">
+                {project.tags.map((tag) => (
+                  <span class="project-tag">{tag}</span>
+                ))}
+              </div>
+
+              {project.links && project.links.length > 0 && (
+                <div class="project-links">
+                  {project.links.map((link) => (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="project-link"
+                    >
+                      {link.text}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div class="project-image">
+              <div class="project-image-placeholder" />
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<div class="project-banner">
+  <div class="project-banner-text">
+    <span>{projects.map((project) => project.title).join(" ")}</span>
+  </div>
+</div>
+
+<div class="projects-exit-container"></div>
+
+<script>
+  (function () {
+    const projects = document.querySelector(".projects-container");
+    const projectItems = document.querySelectorAll(".project-item");
+
+    if (projectItems.length && projects) {
+      const vh = window.innerHeight;
+      // const vw = window.innerWidth;
+
+      const totalHeight = vh + projectItems.length * vh * 1.5;
+      projects.style.minHeight = totalHeight + "px";
+
+      function updateProjects() {
+        const projectsScrollY = window.scrollY - projects.offsetTop;
+
+        projectItems.forEach(function (item, index) {
+          const itemScrollY = projectsScrollY - index * vh * 1.5;
+          const progress = itemScrollY / vh;
+          const translateX = -progress * 100 + 100;
+          item.style.transform = "translateX(" + translateX + "vw)";
+        });
+
+        const banner: HTMLElement | null = document.querySelector(".project-banner");
+        if (banner) {
+          const progress = projectsScrollY / (totalHeight);
+          const bannerWidth = banner.offsetWidth;
+          const translateX = - progress * (bannerWidth);
+          banner.style.transform = "translateX(" + translateX + "px)";
+        }
+      }
+
+      window.addEventListener("scroll", updateProjects, { passive: true });
+      window.addEventListener("resize", updateProjects, { passive: true });
+      updateProjects();
+    }
+  })();
+</script>

@@ -2,169 +2,174 @@
 import "./Squares.scss";
 ---
 
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
-  crossorigin="anonymous"
-/>
-
 <div class="squares"></div>
 
-<script
-  src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"
-  crossorigin="anonymous"></script>
 <script>
-  let seed = Date.now();
-  function random() {
-    seed = (seed + 0x6d2b79f5) | 0;
-    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  }
-
-  // Use larger squares on mobile for better performance
-  const isMobile = window.innerWidth < 768;
-  const SQUARE_SIZE = isMobile ? 60 : 40;
-  const latexSymbols = [
-    "x",
-    "y",
-    "z",
-    "\\mathbf{u}",
-    "\\mathbf{v}",
-    "\\mathbf{w}",
-    "\\mathbf{i}",
-    "\\mathbf{j}",
-    "\\mathbf{k}",
-    "\\alpha",
-    "\\beta",
-    "\\gamma",
-    "\\delta",
-    "\\epsilon",
-    "\\varepsilon",
-    "\\zeta",
-    "\\eta",
-    "\\theta",
-    "\\vartheta",
-    "\\iota",
-    "\\kappa",
-    "\\lambda",
-    "\\mu",
-    "\\nu",
-    "\\xi",
-    "\\pi",
-    "\\varpi",
-    "\\rho",
-    "\\varrho",
-    "\\sigma",
-    "\\varsigma",
-    "\\tau",
-    "\\upsilon",
-    "\\phi",
-    "\\varphi",
-    "\\chi",
-    "\\psi",
-    "\\omega",
-    "\\Gamma",
-    "\\Delta",
-    "\\Theta",
-    "\\Lambda",
-    "\\Xi",
-    "\\Pi",
-    "\\Sigma",
-    "\\Upsilon",
-    "\\Phi",
-    "\\Psi",
-    "\\Omega",
-    "+",
-    "-",
-    "\\times",
-    "=",
-    "\\neq",
-    "\\approx",
-    "\\lt",
-    "\\gt",
-    "\\leqslant",
-    "\\geqslant",
-    "\\infty",
-    "\\partial",
-    "\\nabla",
-    "\\cdot",
-    "\\int",
-    "\\oint",
-    "\\sum",
-    "\\prod",
-    "\\forall",
-    "\\exists",
-    "\\neg",
-    "\\wedge",
-    "\\vee",
-  ];
-
-  function getRandomSymbol() {
-    return latexSymbols[Math.floor(random() * latexSymbols.length)];
-  }
-
-  function renderLatex(element, latex) {
-    try {
-      if (window.katex) {
-        window.katex.render(latex, element, {
-          throwOnError: false,
-          displayMode: false,
-        });
-      }
-    } catch {
-      element.textContent = latex;
-    }
-  }
-
-  function generateSquares() {
-    const containers = document.getElementsByClassName("squares");
-
-    for (let i = 0; i < containers.length; i++) {
-      const container = containers[i];
-      container.innerHTML = "";
-
-      const containerWidth = container.offsetWidth;
-      const containerHeight = container.offsetHeight;
-
-      if (containerWidth === 0 || containerHeight === 0) continue;
-
-      const cols = Math.ceil(containerWidth / SQUARE_SIZE);
-      const rows = Math.ceil(containerHeight / SQUARE_SIZE);
-
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          const square = document.createElement("div");
-          square.className = "square";
-          renderLatex(square, getRandomSymbol());
-          container.appendChild(square);
-        }
-      }
-
-      container.style.display = "grid";
-      container.style.gridTemplateColumns = `repeat(${cols}, ${SQUARE_SIZE}px)`;
-      container.style.gridTemplateRows = `repeat(${rows}, ${SQUARE_SIZE}px)`;
-    }
-  }
-
-  function animateSquares() {
-    const allSquares = document.querySelectorAll(".square");
-    if (allSquares.length === 0) return;
-
-    // Update 3-5 random squares every interval
-    const numToUpdate = Math.floor(random() * 3) + 3;
-
-    for (let i = 0; i < numToUpdate; i++) {
-      const randomIndex = Math.floor(random() * allSquares.length);
-      const square = allSquares[randomIndex];
-      renderLatex(square, getRandomSymbol());
-    }
-  }
-  document.addEventListener("DOMContentLoaded", () => {
-    generateSquares();
-    // Start animation after initial render
-    setInterval(animateSquares, 400);
+  // Import all SVGs as raw strings
+  const svgModules = import.meta.glob("/src/components/letters/*.svg", {
+    as: "raw",
+    eager: true,
   });
 
-  window.addEventListener("resize", generateSquares);
+  // Convert to array of SVG strings
+  const SVG_CONTENT = Object.values(svgModules);
+
+  const PATHS = [
+    "/src/components/letters/x.svg",
+    "/src/components/letters/y.svg",
+    "/src/components/letters/z.svg",
+    "/src/components/letters/u.svg",
+    "/src/components/letters/v.svg",
+    "/src/components/letters/w.svg",
+    "/src/components/letters/i.svg",
+    "/src/components/letters/j.svg",
+    "/src/components/letters/k.svg",
+    "/src/components/letters/alpha.svg",
+    "/src/components/letters/beta.svg",
+    "/src/components/letters/gamma.svg",
+    "/src/components/letters/delta.svg",
+    "/src/components/letters/epsilon.svg",
+    "/src/components/letters/varepsilon.svg",
+    "/src/components/letters/zeta.svg",
+    "/src/components/letters/eta.svg",
+    "/src/components/letters/theta.svg",
+    "/src/components/letters/vartheta.svg",
+    "/src/components/letters/iota.svg",
+    "/src/components/letters/kappa.svg",
+    "/src/components/letters/lambda.svg",
+    "/src/components/letters/mu.svg",
+    "/src/components/letters/nu.svg",
+    "/src/components/letters/xi.svg",
+    "/src/components/letters/pi.svg",
+    "/src/components/letters/varpi.svg",
+    "/src/components/letters/rho.svg",
+    "/src/components/letters/varrho.svg",
+    "/src/components/letters/sigma.svg",
+    "/src/components/letters/varsigma.svg",
+    "/src/components/letters/tau.svg",
+    "/src/components/letters/upsilon.svg",
+    "/src/components/letters/phi.svg",
+    "/src/components/letters/varphi.svg",
+    "/src/components/letters/chi.svg",
+    "/src/components/letters/psi.svg",
+    "/src/components/letters/omega.svg",
+    "/src/components/letters/uGamma.svg",
+    "/src/components/letters/uDelta.svg",
+    "/src/components/letters/uTheta.svg",
+    "/src/components/letters/uLambda.svg",
+    "/src/components/letters/uXi.svg",
+    "/src/components/letters/uPi.svg",
+    "/src/components/letters/uSigma.svg",
+    "/src/components/letters/uUpsilon.svg",
+    "/src/components/letters/uPhi.svg",
+    "/src/components/letters/uPsi.svg",
+    "/src/components/letters/uOmega.svg",
+    "/src/components/letters/plus.svg",
+    "/src/components/letters/minus.svg",
+    "/src/components/letters/times.svg",
+    "/src/components/letters/equals.svg",
+    "/src/components/letters/neq.svg",
+    "/src/components/letters/approx.svg",
+    "/src/components/letters/lt.svg",
+    "/src/components/letters/gt.svg",
+    "/src/components/letters/leqslant.svg",
+    "/src/components/letters/geqslant.svg",
+    "/src/components/letters/infty.svg",
+    "/src/components/letters/partial.svg",
+    "/src/components/letters/nabla.svg",
+    "/src/components/letters/cdot.svg",
+    "/src/components/letters/int.svg",
+    "/src/components/letters/oint.svg",
+    "/src/components/letters/sum.svg",
+    "/src/components/letters/prod.svg",
+    "/src/components/letters/forall.svg",
+    "/src/components/letters/exists.svg",
+    "/src/components/letters/neg.svg",
+    "/src/components/letters/wedge.svg",
+    "/src/components/letters/vee.svg",
+  ];
+
+  (function () {
+    const SQUARE_SIZE = 50;
+
+    let seed = Date.now();
+    function random() {
+      seed = (seed + 0x6d2b79f5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    }
+
+    function getRandomInt(max: number) {
+      return Math.floor(random() * max);
+    }
+
+    function setRandomSVG(square: HTMLElement) {
+      const svgContent = SVG_CONTENT[getRandomInt(SVG_CONTENT.length)];
+      square.innerHTML = svgContent;
+    }
+
+    function generateSquares() {
+      const containers = document.getElementsByClassName("squares");
+
+      for (let i = 0; i < containers.length; i++) {
+        const container: HTMLElement = containers[i] as HTMLElement;
+        container.innerHTML = "";
+
+        // Calculate how many squares fit in physical pixels
+        const physicalWidth = window.innerWidth * window.devicePixelRatio;
+        const physicalHeight = window.innerHeight * window.devicePixelRatio;
+
+        const cols = Math.min(40, Math.ceil(physicalWidth / SQUARE_SIZE));
+        const rows = Math.min(40, Math.ceil(physicalHeight / SQUARE_SIZE));
+
+        const fragment = document.createDocumentFragment();
+
+        for (let row = 0; row < rows; row++) {
+          for (let col = 0; col < cols; col++) {
+            const square = document.createElement("div");
+            square.className = "square";
+            square.id = `square-${row * cols + col}`;
+            setRandomSVG(square);
+            fragment.appendChild(square);
+          }
+        }
+
+        container.appendChild(fragment);
+        container.style.display = "grid";
+        container.style.gridTemplateColumns = `repeat(${cols}, ${SQUARE_SIZE}px)`;
+        container.style.gridTemplateRows = `repeat(${rows}, ${SQUARE_SIZE}px)`;
+      }
+
+      const squares: NodeListOf<HTMLElement> =
+        document.querySelectorAll(".square");
+      for (const square of squares) {
+        square.style.height = `${SQUARE_SIZE}px`;
+        square.style.width = `${SQUARE_SIZE}px`;
+        square.style.border = `1.5px solid rgba(60, 60, 60, 0.3)`;
+        square.style.borderRadius = `4px`;
+      }
+    }
+
+    function animateSquares() {
+      const allSquares = document.querySelectorAll(".square");
+      if (allSquares.length === 0) return;
+
+      // Update 3-5 random squares every interval
+      const numToUpdate = Math.floor(random() * 3) + 3;
+
+      for (let i = 0; i < numToUpdate; i++) {
+        const randomIndex = Math.floor(random() * allSquares.length);
+        const square = allSquares[randomIndex];
+        setRandomSVG(square);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      generateSquares();
+      setInterval(animateSquares, 400);
+    });
+
+    window.addEventListener("resize", generateSquares);
+  })();
 </script>

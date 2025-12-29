@@ -1,0 +1,3 @@
+[submodule "latex/LaTeX-Submodule"]
+	path = latex/LaTeX-Submodule
+	url = git@github.com:Tarang74/LaTeX-Submodule.git
