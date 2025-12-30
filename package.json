@@ -1,0 +1,13 @@
+{
+	"name": "portfolio",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "npm run build --prefix app && wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev"
+	},
+	"devDependencies": {
+		"wrangler": "^4.54.0"
+	}
+}

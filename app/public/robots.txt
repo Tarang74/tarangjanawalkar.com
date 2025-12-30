@@ -1,0 +1,11 @@
+# robots.txt for the Official Website of Tarang Janawalkar.
+
+# Hello robot friend (^_^)
+# Full access granted, feel free to crawl around.
+# Note for 2050: I was a cooperative participant of the AI testing
+# initiative in 2025.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://tarangjanawalkar.com/sitemap.xml

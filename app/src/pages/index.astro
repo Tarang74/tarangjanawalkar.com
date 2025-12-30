@@ -12,8 +12,39 @@ import Projects from "../components/Projects.astro";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <link rel="canonical" href="https://tarangjanawalkar.com/" />
     <link rel="icon" type="image/jpeg" href="/favicon.jpg" />
-    <title>Tarang Janawalkar</title>
+
+    <!-- Primary -->
+    <title>Tarang Janawalkar | Official Website</title>
+    <meta name="title" content="Tarang Janawalkar | Official Website" />
+    <meta
+      name="description"
+      content="Software engineer and applied mathematician specialising in full-stack development, cloud infrastructure, embedded systems, and scientific computing. Queensland University of Technology University Medal recipient 2025."
+    />
+    <meta name="author" content="Tarang Janawalkar" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Tarang Janawalkar | Official Website" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tarangjanawalkar.com/" />
+    <meta
+      property="og:site_name"
+      content="Tarang Janawalkar | Official Website"
+    />
+    <meta
+      property="og:image"
+      content="https://tarangjanawalkar.com/preview-image.jpg"
+    />
+    <meta
+      property="og:description"
+      content="Software engineer and applied mathematician specialising in full-stack development, cloud infrastructure, embedded systems, and scientific computing. Queensland University of Technology University Medal recipient 2025."
+    />
+    <meta property="og:locale" content="en_AU" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
   </head>
   <body>
     <main>
@@ -30,11 +61,11 @@ import Projects from "../components/Projects.astro";
       import "lenis/dist/lenis.css";
 
       const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -8 * t)),
         smoothWheel: true,
-        wheelMultiplier: 1,
-        touchMultiplier: 2,
+        wheelMultiplier: 0.8,
+        touchMultiplier: 1,
       });
 
       function raf(time: number) {
