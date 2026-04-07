@@ -23,12 +23,6 @@ export default [
     },
   },
   {
-    ignores: [
-      "dist/**",
-      "node_modules/**",
-      ".astro/**",
-      "**/*.scss",
-      "**/*.css",
-    ],
+    ignores: ["dist/**", "node_modules/**", ".astro/**"],
   },
 ];

@@ -122,3 +122,38 @@
     font-size: 2.5rem;
   }
 }
+
+.under-construction {
+  font-size: 1rem;
+  color: var(--hero-title);
+  justify-self: center;
+  text-transform: uppercase;
+  bottom: 1rem;
+  // margin-top: 1rem;
+  font-family:
+    "Brandon Grotesque",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial;
+
+  opacity: 0;
+  filter: blur(20px);
+  animation: 2s cubic-bezier(0.83, 0, 0.17, 1) forwards nameReveal;
+  animation-delay: 0.2s;
+
+  @keyframes nameReveal {
+    from {
+      filter: blur(20px);
+      opacity: 0;
+    }
+    to {
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+}
+
+

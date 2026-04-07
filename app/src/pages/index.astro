@@ -49,8 +49,8 @@ import Projects from "../components/Projects.astro";
   <body>
     <main>
       <Hero />
-      <Education />
       <Projects />
+      <Education />
     </main>
     <footer>
       <Footer />
@@ -64,8 +64,8 @@ import Projects from "../components/Projects.astro";
         duration: 1.5,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -8 * t)),
         smoothWheel: true,
-        wheelMultiplier: 0.8,
-        touchMultiplier: 1,
+        wheelMultiplier: 1.2,
+        touchMultiplier: 1.2,
       });
 
       function raf(time: number) {

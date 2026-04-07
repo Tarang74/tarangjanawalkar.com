@@ -9,6 +9,7 @@
   "assets": {
     // The path to the directory containing the `index.html` file to be served at `/`
     "directory": "./app/dist",
+    // "directory": "./tarangjanawalkar.com/dist",
   },
   "observability": {
     "enabled": true
