@@ -5,11 +5,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "portfolio",
-  "compatibility_date": "2025-12-30",
+  "compatibility_date": "2025-12-10",
   "assets": {
     // The path to the directory containing the `index.html` file to be served at `/`
-    "directory": "./app/dist",
-    // "directory": "./tarangjanawalkar.com/dist",
+    "directory": "./tarangjanawalkar.com/dist",
   },
   "observability": {
     "enabled": true

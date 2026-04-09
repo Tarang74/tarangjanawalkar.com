@@ -3,7 +3,7 @@
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"deploy": "npm run build --prefix app && wrangler deploy",
+		"deploy": "npm run build --prefix tarangjanawalkar.com && wrangler deploy",
 		"dev": "wrangler dev",
 		"start": "wrangler dev"
 	},

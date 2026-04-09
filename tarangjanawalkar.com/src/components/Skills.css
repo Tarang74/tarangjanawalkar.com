@@ -1,0 +1,104 @@
+.skills {
+  padding: clamp(5rem, 12vh, 10rem) 0;
+  background-color: #07070a;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+
+  .skills-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 clamp(1.5rem, 5vw, 5rem);
+  }
+
+  .skills-rows {
+    border-top: 1px solid var(--border);
+  }
+
+  .skills-row {
+    display: grid;
+    grid-template-columns: clamp(130px, 18vw, 260px) 1fr;
+    gap: 0 2rem;
+    border-bottom: 1px solid var(--border);
+    padding: clamp(1.25rem, 2.5vw, 2rem) 0;
+    align-items: start;
+  }
+
+  .skills-row--right {
+    grid-template-columns: 1fr clamp(130px, 18vw, 260px);
+  }
+
+  .skills-row--right .skills-row-category {
+    order: 2;
+    text-align: right;
+  }
+
+  .skills-row--right .skills-row-list {
+    order: 1;
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .skills-row-category {
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding-top: 0.55rem;
+    line-height: 1.4;
+  }
+
+  .skills-row-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+  }
+
+  .skills-row-skill {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(1.5rem, 2.8vw, 2.75rem);
+    letter-spacing: 0.03em;
+    color: var(--text-primary);
+    line-height: 1.05;
+    display: block;
+    user-select: text;
+  }
+}
+
+.skills::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 7, 10, 0.82);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 600px) {
+  .skills {
+    .skills-content {
+      padding: 0 1.5rem;
+    }
+
+    .skills-row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem 0;
+    }
+
+    .skills-row--right {
+      grid-template-columns: 1fr;
+    }
+
+    .skills-row--right .skills-row-category {
+      order: 1;
+      text-align: left;
+    }
+
+    .skills-row--right .skills-row-list {
+      order: 2;
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+}

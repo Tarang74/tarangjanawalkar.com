@@ -1,0 +1,58 @@
+.section {
+  position: relative;
+  z-index: 1;
+
+  .section-heading {
+    position: relative;
+    z-index: 1;
+    padding: 0 clamp(1.5rem, 5vw, 5rem);
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-pink);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .section-title {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(3rem, 7vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--text-primary);
+  }
+}
+
+.corner-mark {
+  position: absolute;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 300;
+  z-index: 2;
+  line-height: 1;
+}
+
+.corner-mark--tl {
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
+.corner-mark--tr {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.corner-mark--bl {
+  bottom: 1.5rem;
+  left: 1.5rem;
+}
+
+.corner-mark--br {
+  bottom: 1.5rem;
+  right: 1.5rem;
+}

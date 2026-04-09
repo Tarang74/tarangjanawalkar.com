@@ -1,0 +1,123 @@
+.contact {
+  min-height: 100svh;
+  background: var(--accent-pink);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1rem, 3vw, 3rem) clamp(3rem, 7vw, 6rem);
+  z-index: 1;
+  overflow: hidden;
+
+  .contact-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+
+  .contact-heading {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(5.5rem, 15vw, 18rem);
+    line-height: 0.88;
+    letter-spacing: 0.01em;
+    color: #09090b;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-email {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(1.125rem, 2.8vw, 3.25rem);
+    letter-spacing: 0.04em;
+    color: rgba(9, 9, 11, 0.55);
+    display: inline-block;
+    transition: color 0.2s;
+    user-select: text;
+  }
+
+  .contact-email:hover {
+    color: #09090b;
+  }
+
+  .contact-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(9, 9, 11, 0.12);
+  }
+
+  .contact-socials {
+    display: flex;
+    gap: 0.875rem;
+    align-items: center;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(0.9rem, 1.2vw, 1.125rem);
+    letter-spacing: 0.1em;
+    color: rgba(9, 9, 11, 0.5);
+  }
+
+  .contact-socials a {
+    color: inherit;
+    transition: color 0.2s;
+  }
+
+  .contact-socials a:hover {
+    color: #09090b;
+  }
+
+  .contact-copy {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    color: rgba(9, 9, 11, 0.35);
+  }
+
+  .scroll-to-top-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: rgba(9, 9, 11, 0.3);
+    cursor: pointer;
+    padding: 1rem;
+    transition: color 0.2s;
+    font-family: inherit;
+  }
+
+  .scroll-to-top-btn:hover {
+    color: rgba(9, 9, 11, 0.6);
+  }
+}
+
+.contact .corner-mark {
+  color: rgba(9, 9, 11, 0.2);
+}
+
+@media (max-width: 768px) {
+  .contact {
+    .contact-body {
+      align-items: center;
+    }
+
+    .contact-email {
+      font-size: clamp(1.35rem, 4vw, 2rem);
+    }
+
+    .contact-bottom {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .contact-socials {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}
