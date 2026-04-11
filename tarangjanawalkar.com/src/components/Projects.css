@@ -26,7 +26,7 @@
     font-family: "Bebas Neue", sans-serif;
     font-size: clamp(5rem, 16vw, 22rem);
     line-height: 1;
-    color: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.08);
     text-align: center;
     user-select: none;
     transition: color 0.4s ease;
@@ -34,7 +34,7 @@
   }
 
   .project-feature:hover .project-feature-number {
-    color: rgba(255, 255, 255, 0.055);
+    color: rgba(255, 255, 255, 0.08);
   }
 
   .project-feature-content {

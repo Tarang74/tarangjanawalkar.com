@@ -61,3 +61,64 @@
     background: linear-gradient(to bottom, transparent, var(--text-muted));
   }
 }
+
+.hero-bookmark-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 280px;
+  overflow: hidden;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.hero-bookmark {
+  position: absolute;
+  top: 62px;
+  right: -100px;
+  width: 420px;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  transform: rotate(45deg);
+  background: linear-gradient(
+    to bottom,
+    var(--accent-pink) 0px,
+    var(--accent-pink) 4px,
+    white 4px,
+    white 9px,
+    var(--accent-pink) 9px,
+    var(--accent-pink) calc(100% - 9px),
+    white calc(100% - 9px),
+    white calc(100% - 4px),
+    var(--accent-pink) calc(100% - 4px),
+    var(--accent-pink) 100%
+  );
+  text-decoration: none;
+  text-align: center;
+  pointer-events: all;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.hero-bookmark-name {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #1a0f0d;
+}
+
+.hero-bookmark-live {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #1a0f0d;
+}
