@@ -34,7 +34,12 @@ export const projects: Project[] = [
       "TypeScript",
       "ThreeJS",
     ],
-    links: [{ label: "Visit Fluid Simulator", href: "/fluid-sim/" }],
+    links: [
+      {
+        label: "Visit Fluid Simulator",
+        href: "https://fluid.tarangjanawalkar.com/",
+      },
+    ],
   },
   {
     title: "The Sway",

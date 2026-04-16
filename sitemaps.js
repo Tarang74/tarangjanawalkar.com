@@ -2,7 +2,11 @@ import { SitemapStream } from "sitemap";
 import { createWriteStream } from "fs";
 import { Readable } from "stream";
 
-const links = [{ url: "/", priority: 1 }];
+const links = [
+	{ url: "/", priority: 1 },
+	{ url: "https://farm.tarangjanawalkar.com/", priority: 0.8 },
+	{ url: "https://fluid.tarangjanawalkar.com/", priority: 0.8 },
+];
 
 const stream = new SitemapStream({ hostname: "https://tarangjanawalkar.com" });
 const writeStream = createWriteStream("public/sitemap.xml");

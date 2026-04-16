@@ -17,14 +17,12 @@ export const awards: Award[] = [
   },
   {
     title: "Faculty of Engineering Dean's List (x10)",
-    description:
-      "Achieved a semester GPA of 6.5 or higher across 10 semesters",
+    description: "Achieved a semester GPA of 6.5 or higher across 10 semesters",
     year: "2021-2025",
   },
   {
     title: "Faculty of Science Dean's List (x10)",
-    description:
-      "Achieved a semester GPA of 6.5 or higher across 10 semesters",
+    description: "Achieved a semester GPA of 6.5 or higher across 10 semesters",
     year: "2021-2025",
   },
   {

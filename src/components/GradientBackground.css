@@ -72,7 +72,9 @@
       rgba(34, 62, 125, 0.16) 0%,
       transparent 74%
     );
-  background-blend-mode: screen, screen, screen, screen, color-dodge, overlay, soft-light, normal, screen, screen, screen, screen, screen, screen;
+  background-blend-mode:
+    screen, screen, screen, screen, color-dodge, overlay, soft-light, normal,
+    screen, screen, screen, screen, screen, screen;
 }
 
 .gradient-bg::after {
@@ -141,7 +143,9 @@
         rgba(34, 62, 125, 0.12) 0%,
         transparent 74%
       );
-    background-blend-mode: screen, screen, screen, screen, color-dodge, normal, screen, screen, screen, screen, screen;
+    background-blend-mode:
+      screen, screen, screen, screen, color-dodge, normal, screen, screen,
+      screen, screen, screen;
   }
 
   .gradient-bg::after {
