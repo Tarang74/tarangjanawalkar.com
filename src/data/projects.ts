@@ -19,6 +19,29 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "AuraFarmers",
+    subtitle: "QUT AI & ML Society Hackathon 2026",
+    description:
+      "A real-time multiplayer trading game where players buy and sell corn stock to accumulate aura and outmanoeuvre rivals; designed as a fun, low-stakes introduction to stock markets and options contracts. The Rust backend implements price-time priority order matching, stale-order pruning, and Black-Scholes options pricing, with NPC traders running in the background to keep markets lively. Delivered real-time multiplayer via WebSockets, containerised on AWS Lightsail, and provisioned end-to-end with Terraform.",
+    tags: [
+      "Rust",
+      "React",
+      "TypeScript",
+      "ThreeJS",
+      "WebSockets",
+      "Amazon Web Services",
+      "Docker",
+      "Cloudflare",
+      "LLM Integration",
+    ],
+    links: [
+      {
+        label: "Visit AuraFarmer",
+        href: "https://farm.tarangjanawalkar.com/",
+      },
+    ],
+  },
+  {
     title: "Fluid Simulator",
     subtitle: "Cloud Computing Project",
     description:

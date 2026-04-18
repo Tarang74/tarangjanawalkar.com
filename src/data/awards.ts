@@ -6,6 +6,11 @@ export interface Award {
 
 export const awards: Award[] = [
   {
+    title: "People's Choice Award",
+    description: "QUT AI & ML Society Hackathon 2026",
+    year: "2026",
+  },
+  {
     title: "QUT Postgraduate Research Award",
     description: "ARC-funded scholarship for PhD research",
     year: "2025",

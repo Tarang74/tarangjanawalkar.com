@@ -39,22 +39,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      <div className="hero-bookmark-wrap">
-        <motion.a
-          href="https://farm.tarangjanawalkar.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hero-bookmark"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.2, duration: 0.7 }}
-          aria-label="AuraFarmer — now live"
-        >
-          <span className="hero-bookmark-name">🌽 AuraFarmer</span>
-          <span className="hero-bookmark-live">now live</span>
-        </motion.a>
-      </div>
-
       <motion.div
         className="hero-scroll"
         initial={{ opacity: 0 }}
