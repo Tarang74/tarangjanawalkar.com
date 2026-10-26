@@ -26,7 +26,7 @@
       rgba(255, 255, 255, 0.1),
       rgba(255, 255, 255, 0.05)
     );
-    margin-right: 4px;
+    margin-right: 6px;
   }
 
   .side-nav-item {
@@ -37,25 +37,22 @@
   }
 
   .side-nav-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 11px;
-    height: 11px;
-    font-size: 0.95rem;
-    line-height: 1;
+    display: block;
+    width: 13px;
+    height: 13px;
     color: rgba(255, 255, 255, 0.26);
     flex-shrink: 0;
     transition:
       color 0.25s ease,
       transform 0.25s ease,
-      text-shadow 0.25s ease;
+      filter 0.25s ease;
   }
 
   .side-nav-dot {
     display: block;
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
+    margin: 0 2px;
     border-radius: 50%;
     border: 1.5px solid rgba(255, 255, 255, 0.18);
     background: transparent;
@@ -91,7 +88,7 @@
   .side-nav-item--active .side-nav-icon {
     color: var(--accent-pink);
     transform: scale(1.1);
-    text-shadow: 0 0 8px rgba(240, 203, 196, 0.28);
+    filter: drop-shadow(0 0 4px rgba(240, 203, 196, 0.35));
   }
 
   .side-nav-item:hover .side-nav-dot {

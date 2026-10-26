@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./SideNav.css";
 
 const sections = [
-  { id: "hero", label: "Hero", icon: "⌂" },
+  { id: "hero", label: "Hero", icon: true },
   { id: "projects", label: "Projects" },
   { id: "skills", label: "Skills" },
   { id: "education", label: "Education" },
@@ -82,9 +82,19 @@ export function SideNav() {
           >
             <span className="side-nav-label">{section.label}</span>
             {"icon" in section ? (
-              <span className="side-nav-icon" aria-hidden="true">
-                {section.icon}
-              </span>
+              <svg
+                className="side-nav-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 11.5 12 4l9 7.5" />
+                <path d="M5.5 10v10h13V10" />
+              </svg>
             ) : (
               <span className="side-nav-dot" />
             )}
